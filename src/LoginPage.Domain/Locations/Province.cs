@@ -5,19 +5,19 @@ namespace LoginPage.Domain.Locations;
 public class Province : Entity<ProvinceId>
 {
     public DateTime CreatedAt { get; }
-    public CountryId CountryId { get; }
+    public Country Country { get; }
     public string Name { get; }
 
 
-    private Province(ProvinceId id, DateTime createdAt, CountryId countryId, string name)
+    private Province(ProvinceId id, DateTime createdAt, Country country, string name)
         : base(id)
     {
         CreatedAt = createdAt;
-        CountryId = countryId;
+        Country = country;
         Name = name;
     }
 
 
-    public static Province Create(string name, CountryId countryId)
-            => new(ProvinceId.CreateUnique(), DateTime.UtcNow, countryId, name);
+    public static Province Create(string name, Country country)
+            => new(ProvinceId.CreateUnique(), DateTime.UtcNow, country, name);
 }

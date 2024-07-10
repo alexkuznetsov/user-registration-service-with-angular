@@ -21,7 +21,7 @@ public class Country : AggregateRoot<CountryId, Guid>
 
     public Province AddProvince(string name)
     {
-        var province = Province.Create(name, (CountryId)Id);
+        var province = Province.Create(name, this);
 
         _provincies.Add(province);
 
