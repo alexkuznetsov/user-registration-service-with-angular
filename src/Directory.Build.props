@@ -1,0 +1,9 @@
+<Project>
+  <PropertyGroup>
+    <!-- https://github.com/dotnet/msbuild/issues/2661 -->
+    <AddSyntheticProjectReferencesForSolutionDependencies>false</AddSyntheticProjectReferencesForSolutionDependencies>
+    <MSBuildEnableWorkloadResolver>false</MSBuildEnableWorkloadResolver>
+    <RunApiCompat>False</RunApiCompat>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+</Project>
