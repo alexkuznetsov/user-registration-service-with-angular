@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\LoginPage.Domain\LoginPage.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
