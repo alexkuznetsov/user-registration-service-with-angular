@@ -19,5 +19,5 @@ public class Province : Entity<ProvinceId>
 
 
     public static Province Create(string name, CountryId countryId)
-            =>new(ProvinceId.CreateUnique(), DateTime.UtcNow, countryId, name);
+            => new(ProvinceId.CreateUnique(), DateTime.UtcNow, countryId, name);
 }
