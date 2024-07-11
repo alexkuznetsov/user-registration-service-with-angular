@@ -14,8 +14,6 @@ public class LoginPageDbContext : DbContext
 
     public DbSet<Country> Countries { get; set; } = null!;
     public DbSet<Province> Provinces { get; set; } = null!;
-    public DbSet<UserLocation> UserLocations { get; set; } = null!;
-
     public DbSet<User> Users { get; set; } = null!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

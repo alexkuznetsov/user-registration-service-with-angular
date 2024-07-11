@@ -3,6 +3,7 @@ using System;
 using LoginPage.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LoginPage.Infrastructure.Migrations
 {
     [DbContext(typeof(LoginPageDbContext))]
-    partial class LoginPageDbContentModelSnapshot : ModelSnapshot
+    [Migration("20240711072845_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.7");
@@ -64,31 +67,6 @@ namespace LoginPage.Infrastructure.Migrations
                     b.ToTable("provincies", (string)null);
                 });
 
-            modelBuilder.Entity("LoginPage.Domain.Locations.UserLocation", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("id");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("created_at");
-
-                    b.Property<Guid>("province_id")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("user_id")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("province_id");
-
-                    b.HasIndex("user_id");
-
-                    b.ToTable("user_locations", (string)null);
-                });
-
             modelBuilder.Entity("LoginPage.Domain.Users.User", b =>
                 {
                     b.Property<Guid>("Id")
@@ -111,13 +89,12 @@ namespace LoginPage.Infrastructure.Migrations
                         .HasColumnType("TEXT")
                         .HasColumnName("password");
 
-                    b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("user_name");
+                    b.Property<Guid>("province_id")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("province_id");
 
                     b.ToTable("users", (string)null);
                 });
@@ -133,7 +110,7 @@ namespace LoginPage.Infrastructure.Migrations
                     b.Navigation("Country");
                 });
 
-            modelBuilder.Entity("LoginPage.Domain.Locations.UserLocation", b =>
+            modelBuilder.Entity("LoginPage.Domain.Users.User", b =>
                 {
                     b.HasOne("LoginPage.Domain.Locations.Province", "Province")
                         .WithMany()
@@ -141,15 +118,7 @@ namespace LoginPage.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("LoginPage.Domain.Users.User", "User")
-                        .WithMany()
-                        .HasForeignKey("user_id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Province");
-
-                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }

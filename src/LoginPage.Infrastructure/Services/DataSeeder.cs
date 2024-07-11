@@ -19,13 +19,15 @@ internal class DataSeeder
 
     internal void SeedData()
     {
+        var countryKz = Country.Create("Kazakhstan");
+        var countryUsa = Country.Create("USA");
+
+        var provinceKz1 = Province.Create("East Kazakstan", countryKz);
+        var provinceKz2 = Province.Create("South Kazakhstan", countryKz);
+
         if (!_ctx.Countries.Any())
         {
-            var countryKz = Country.Create("Kazakhstan");
-            var countryUsa = Country.Create("USA");
 
-            var provinceKz1 = Province.Create("East Kazakstan", countryKz);
-            var provinceKz2 = Province.Create("South Kazakhstan", countryKz);
 
             var provinceUsa1 = Province.Create("California", countryUsa);
             var provinceUsa2 = Province.Create("Texas", countryUsa);
@@ -37,7 +39,7 @@ internal class DataSeeder
 
         if (!_ctx.Users.Any())
         {
-            var user = User.Create("Admin", "admin@local", "");
+            var user = User.Create("Admin", "admin@local", provinceKz1);
             var hash = _passwordHasher.HashPassword(user, "1qaz!QAZ");
             user.SetPassword(hash);
 

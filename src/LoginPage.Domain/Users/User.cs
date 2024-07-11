@@ -1,34 +1,34 @@
 using LoginPage.Domain.Common;
+using LoginPage.Domain.Locations;
 
 namespace LoginPage.Domain.Users;
 
 public class User : AggregateRoot<UserId, Guid>
 {
-    public string UserName { get; private set; }
     public string Email { get; private set; }
     public string Password { get; private set; }
     public DateTime CreatedAt { get; private set; }
 
+    public Province Province { get; private set; }
+
     private User(UserId id,
-        string userName,
         string email,
         string password,
-        DateTime createdAt)
+        DateTime createdAt,
+        Province province)
         : base(id)
     {
-        UserName = userName;
         Email = email;
         Password = password;
         CreatedAt = createdAt;
+        Province = province;
     }
 
-    public static User Create(
-        string userName,
-        string email,
-        string password)
+    public static User Create(string email,
+        string password, Province province)
     {
-        return new(UserId.CreateUnique(), userName, email, password,
-            DateTime.UtcNow);
+        return new(UserId.CreateUnique(), email, password,
+            DateTime.UtcNow, province);
     }
 
     public void SetPassword(string hashedPassword)

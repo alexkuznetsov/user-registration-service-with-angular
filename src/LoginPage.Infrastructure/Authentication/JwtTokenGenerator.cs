@@ -32,7 +32,6 @@ public class JwtTokenGenerator : IJwtTokenGenerator
             audience: _jwtOptions.ValidAudience,
             claims: [
                         new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()!),
-                        new Claim(JwtRegisteredClaimNames.Name, user.UserName),
                         new Claim(JwtRegisteredClaimNames.Email, user.Email),
                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
             ],
@@ -46,7 +45,6 @@ public class JwtTokenGenerator : IJwtTokenGenerator
             audience: _jwtOptions.ValidAudience,
            claims: [
                        new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()!),
-                        new Claim(JwtRegisteredClaimNames.Name, user.UserName),
                         new Claim(JwtRegisteredClaimNames.Email, user.Email),
                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
            ],

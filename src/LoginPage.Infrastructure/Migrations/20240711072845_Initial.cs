@@ -25,21 +25,6 @@ namespace LoginPage.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "users",
-                columns: table => new
-                {
-                    id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    user_name = table.Column<string>(type: "TEXT", maxLength: 256, nullable: false),
-                    email = table.Column<string>(type: "TEXT", maxLength: 256, nullable: false),
-                    password = table.Column<string>(type: "TEXT", maxLength: 256, nullable: false),
-                    created_at = table.Column<DateTime>(type: "TEXT", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_users", x => x.id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "provincies",
                 columns: table => new
                 {
@@ -60,27 +45,22 @@ namespace LoginPage.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "user_locations",
+                name: "users",
                 columns: table => new
                 {
                     id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    email = table.Column<string>(type: "TEXT", maxLength: 256, nullable: false),
+                    password = table.Column<string>(type: "TEXT", maxLength: 256, nullable: false),
                     created_at = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    province_id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    user_id = table.Column<Guid>(type: "TEXT", nullable: false)
+                    province_id = table.Column<Guid>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_user_locations", x => x.id);
+                    table.PrimaryKey("PK_users", x => x.id);
                     table.ForeignKey(
-                        name: "FK_user_locations_provincies_province_id",
+                        name: "FK_users_provincies_province_id",
                         column: x => x.province_id,
                         principalTable: "provincies",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_user_locations_users_user_id",
-                        column: x => x.user_id,
-                        principalTable: "users",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -91,27 +71,19 @@ namespace LoginPage.Infrastructure.Migrations
                 column: "country_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_user_locations_province_id",
-                table: "user_locations",
+                name: "IX_users_province_id",
+                table: "users",
                 column: "province_id");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_user_locations_user_id",
-                table: "user_locations",
-                column: "user_id");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "user_locations");
+                name: "users");
 
             migrationBuilder.DropTable(
                 name: "provincies");
-
-            migrationBuilder.DropTable(
-                name: "users");
 
             migrationBuilder.DropTable(
                 name: "countries");

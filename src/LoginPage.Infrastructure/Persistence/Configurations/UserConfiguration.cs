@@ -1,5 +1,4 @@
-﻿using LoginPage.Domain.Locations;
-using LoginPage.Domain.Users;
+﻿using LoginPage.Domain.Users;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -22,14 +21,10 @@ internal class UserConfiguration : IEntityTypeConfiguration<User>
             .ValueGeneratedNever()
             .HasConversion(
                 id => id.Value,
-                value => UserLocationId.Create(value));
+                value => UserId.Create(value));
 
         builder.Property(x => x.CreatedAt)
            .HasColumnName("created_at");
-
-        builder.Property(x => x.UserName)
-           .HasColumnName("user_name")
-           .HasMaxLength(256);
 
         builder.Property(x => x.Email)
                    .HasColumnName("email")
@@ -38,5 +33,11 @@ internal class UserConfiguration : IEntityTypeConfiguration<User>
         builder.Property(x => x.Password)
                    .HasColumnName("password")
                    .HasMaxLength(256);
+
+        builder.HasOne(x => x.Province)
+            .WithMany()
+            .HasForeignKey("province_id")
+            .OnDelete(DeleteBehavior.Cascade)
+            .IsRequired();
     }
 }
