@@ -8,21 +8,18 @@ public class User : AggregateRoot<UserId, Guid>
     public string Email { get; private set; }
     public string Password { get; private set; }
     public DateTime CreatedAt { get; private set; }
-    public DateTime UpdatedAt { get; private set; }
 
     private User(UserId id,
         string userName,
         string email,
         string password,
-        DateTime createdAt,
-        DateTime updatedAt)
+        DateTime createdAt)
         : base(id)
     {
         UserName = userName;
         Email = email;
         Password = password;
         CreatedAt = createdAt;
-        UpdatedAt = updatedAt;
     }
 
     public static User Create(
@@ -31,8 +28,11 @@ public class User : AggregateRoot<UserId, Guid>
         string password)
     {
         return new(UserId.CreateUnique(), userName, email, password,
-            DateTime.UtcNow, DateTime.UtcNow);
+            DateTime.UtcNow);
     }
+
+    public void SetPassword(string hashedPassword)
+        => Password = hashedPassword;
 
 #pragma warning disable CS8618
     private User() { }

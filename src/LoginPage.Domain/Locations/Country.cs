@@ -4,33 +4,24 @@ namespace LoginPage.Domain.Locations;
 
 public class Country : AggregateRoot<CountryId, Guid>
 {
-    private readonly List<Province> _provincies = [];
+    public DateTime CreatedAt { get; private set; }
+    public string Name { get; private set; }
 
-    public DateTime CreatedAt { get; }
-    public string Name { get; }
-
-    public IReadOnlyList<Province> Provinces => _provincies.AsReadOnly();
-
-    private Country(CountryId id, DateTime createdAt, string name, List<Province>? provincies) :
+    private Country(CountryId id, DateTime createdAt, string name) :
         base(id)
     {
         CreatedAt = createdAt;
         Name = name;
-        _provincies = provincies ?? [];
     }
 
-    public Province AddProvince(string name)
+    private Country()
     {
-        var province = Province.Create(name, this);
 
-        _provincies.Add(province);
-
-        return province;
     }
 
     public static Country Create(string name)
     {
-        return new(CountryId.CreateUnique(), DateTime.UtcNow, name, []);
+        return new(CountryId.CreateUnique(), DateTime.UtcNow, name);
     }
 }
 

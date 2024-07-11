@@ -1,14 +1,13 @@
 ﻿using LoginPage.Domain.Locations;
-using LoginPage.Domain.UserLocations;
 using LoginPage.Domain.Users;
 
 using Microsoft.EntityFrameworkCore;
 
 namespace LoginPage.Infrastructure.Persistence;
 
-public class LoginPageDbContent : DbContext
+public class LoginPageDbContext : DbContext
 {
-    public LoginPageDbContent(DbContextOptions<LoginPageDbContent> options) : base(options)
+    public LoginPageDbContext(DbContextOptions<LoginPageDbContext> options) : base(options)
     {
 
     }
@@ -22,7 +21,7 @@ public class LoginPageDbContent : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder
-            .ApplyConfigurationsFromAssembly(typeof(LoginPageDbContent).Assembly);
+            .ApplyConfigurationsFromAssembly(typeof(LoginPageDbContext).Assembly);
 
         base.OnModelCreating(modelBuilder);
     }

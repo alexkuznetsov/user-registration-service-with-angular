@@ -7,24 +7,36 @@ namespace LoginPage.Infrastructure.Persistence.Configurations;
 
 internal class ProvinceConfiguration : IEntityTypeConfiguration<Province>
 {
-    public void Configure(EntityTypeBuilder<Province> builder)
+    public void Configure(EntityTypeBuilder<Province> pBuilder)
     {
-        ConfigureProvinceTable(builder);
-    }
+        pBuilder
+               .ToTable("provincies");
 
-    private static void ConfigureProvinceTable(EntityTypeBuilder<Province> builder)
-    {
-        builder
-            .ToTable("provincies");
-
-        builder
+        pBuilder
             .HasKey(b => b.Id);
 
-        builder
+        pBuilder
             .Property(b => b.Id)
             .ValueGeneratedNever()
+            .HasColumnName("id")
             .HasConversion(
                 id => id.Value,
                 value => ProvinceId.Create(value));
+
+
+        pBuilder.Property(x => x.CreatedAt)
+           .HasColumnName("created_at")
+           .IsRequired();
+
+        pBuilder.Property(x => x.Name)
+            .HasColumnName("name")
+            .HasMaxLength(256)
+            .IsRequired();
+
+        pBuilder.HasOne(x => x.Country)
+            .WithMany()
+            .HasForeignKey("country_id")
+            .OnDelete(DeleteBehavior.Cascade)
+            .IsRequired();
     }
 }

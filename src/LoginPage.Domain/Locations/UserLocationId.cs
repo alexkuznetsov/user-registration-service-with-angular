@@ -1,6 +1,6 @@
 using LoginPage.Domain.Common;
 
-namespace LoginPage.Domain.UserLocations;
+namespace LoginPage.Domain.Locations;
 
 public class UserLocationId : AggregateRootId<Guid>
 {
