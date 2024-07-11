@@ -452,3 +452,6 @@ $RECYCLE.BIN/
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+/src/LoginPage/loginpage.db
+/src/LoginPage/loginpage.db-shm
+/src/LoginPage/loginpage.db-wal
