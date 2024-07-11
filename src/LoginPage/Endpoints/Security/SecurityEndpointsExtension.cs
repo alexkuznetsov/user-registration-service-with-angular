@@ -12,8 +12,9 @@ internal static class SecurityEndpointsExtension
     internal static WebApplication UseSecurityEndpoints(this WebApplication app)
     {
         app.MapPost("/api/user/token", GetUserTokenAsync)
-        .WithName("GetUserToken")
-        .WithOpenApi();
+            .AllowAnonymous()
+            .WithName("GetUserToken")
+            .WithOpenApi();
 
 
         return app;

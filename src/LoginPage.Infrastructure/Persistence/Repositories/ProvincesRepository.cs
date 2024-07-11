@@ -14,6 +14,12 @@ internal class ProvincesRepository : IProvincesRepository
         _context = context;
     }
 
+    public Task<Province?> FindAsync(ProvinceId id, CancellationToken cancellationToken = default)
+    {
+        return _context.Provinces.Where(p => p.Id == id)
+            .SingleOrDefaultAsync(cancellationToken);
+    }
+
     public IQueryable<Province> GetAll()
     {
         return _context.Provinces

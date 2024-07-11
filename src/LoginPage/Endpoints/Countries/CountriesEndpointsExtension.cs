@@ -8,6 +8,7 @@ internal static class CountriesEndpointsExtension
     internal static WebApplication UseCountriesEndpoints(this WebApplication app)
     {
         app.MapGet("/api/countries", GetCountriesDataAsync)
+            .WithSecurity()
             .WithName("GetCountriesData")
             .WithOpenApi();
 

@@ -13,6 +13,11 @@ public class UsersRepository : IUsersRepository
         _context = context;
     }
 
+    public void Add(User user)
+    {
+        _context.Add(user);
+    }
+
     public Task<User?> FindByEmail(string email, CancellationToken cancellationToken = default)
     {
         return _context.Users.FirstOrDefaultAsync(u => u.Email == email, cancellationToken);

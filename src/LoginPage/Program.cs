@@ -1,6 +1,7 @@
 using LoginPage.Application;
 using LoginPage.Endpoints;
 using LoginPage.Infrastructure;
+using LoginPage.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,7 +9,13 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+builder.Services.AddCors(c =>
+{
+    c.AddDefaultPolicy(b =>
+    {
+        b.ConfigureCorsOptions(builder.Environment, builder.Configuration);
+    });
+});
 
 builder.Services
     .AddApplication()
@@ -23,8 +30,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseExceptionHandler("/error");
+//app.UseExceptionHandler("/error");
 
+app.UseCors();
 //app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
