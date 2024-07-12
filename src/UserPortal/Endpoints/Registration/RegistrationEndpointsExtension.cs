@@ -1,13 +1,13 @@
 using System.ComponentModel.DataAnnotations;
 
+using Microsoft.AspNetCore.Identity;
+
 using UserPortal.Application;
 using UserPortal.Application.Common.Authentication;
 using UserPortal.Application.Provinces.Queries;
 using UserPortal.Application.Users.Commands;
 using UserPortal.Application.Users.Queries;
 using UserPortal.Domain.Users;
-
-using Microsoft.AspNetCore.Identity;
 
 namespace UserPortal.Endpoints.Weather;
 
@@ -36,7 +36,7 @@ internal static class RegistrationEndpointsExtension
 
         if (!result.IsNotFound())
         {
-            return Results.NotFound(new
+            return Results.BadRequest(new
             {
                 Success = false,
                 Message = "User already exists"

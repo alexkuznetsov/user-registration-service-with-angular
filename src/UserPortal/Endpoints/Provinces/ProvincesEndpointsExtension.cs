@@ -8,7 +8,7 @@ internal static class ProvincesEndpointsExtension
     internal static WebApplication UseProvincesEndpoints(this WebApplication app)
     {
         app.MapGet("/api/provinces/{countryId}", GetProvincesByCountryIdAsync)
-            .WithSecurity()
+            .AllowAnonymous()
             .WithName("GetProvinciesData")
             .WithOpenApi();
 

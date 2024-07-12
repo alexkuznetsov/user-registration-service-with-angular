@@ -1,6 +1,6 @@
-using UserPortal.Endpoints.Weather;
-
 using Microsoft.AspNetCore.Authorization.Infrastructure;
+
+using UserPortal.Endpoints.Weather;
 
 namespace UserPortal.Endpoints;
 
@@ -11,7 +11,8 @@ internal static class EndpointsExtensions
         app.UseWeatherEp()
            .UseCountriesEndpoints()
            .UseProvincesEndpoints()
-           .UseSecurityEndpoints();
+           .UseSecurityEndpoints()
+           .UseRegistrationEndpoints();
 
         return app;
     }
