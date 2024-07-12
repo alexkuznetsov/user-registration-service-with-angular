@@ -455,3 +455,6 @@ $RECYCLE.BIN/
 /src/LoginPage/loginpage.db
 /src/LoginPage/loginpage.db-shm
 /src/LoginPage/loginpage.db-wal
+/src/UserPortal/UserPortal.db
+/src/UserPortal/UserPortal.db-shm
+/src/UserPortal/UserPortal.db-wal
