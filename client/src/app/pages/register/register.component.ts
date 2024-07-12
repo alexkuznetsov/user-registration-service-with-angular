@@ -6,7 +6,6 @@ import {
     ReactiveFormsModule,
 } from "@angular/forms";
 import { Component, OnInit } from "@angular/core";
-//import { CustomValidators } from '../../custom-validator';
 //import { AuthService } from '../../services/auth-service/auth.service';
 import { tap } from "rxjs";
 import { Router, RouterLink } from "@angular/router";
@@ -17,6 +16,9 @@ import { MatIcon } from "@angular/material/icon";
 import { NgIf } from "@angular/common";
 import { MatInput } from "@angular/material/input";
 import { MatCheckbox } from "@angular/material/checkbox";
+import { PasswordValidator } from "../../validators/passwordValidator";
+import { RegistrationService } from "../../services/registrationService";
+import { MatButton, MatButtonModule } from "@angular/material/button";
 
 @Component({
     selector: "app-register",
@@ -38,6 +40,7 @@ import { MatCheckbox } from "@angular/material/checkbox";
         ReactiveFormsModule,
         NgIf,
         MatCheckbox,
+        MatButtonModule,
     ],
 })
 export class RegisterComponent {
@@ -50,22 +53,27 @@ export class RegisterComponent {
             password: new FormControl(null, [Validators.required]),
             passwordConfirm: new FormControl(null, [Validators.required]),
             isAgree: new FormControl(null, []),
-        }
+        },
         // add custom Validators to the form, to make sure that password and passwordConfirm are equal
-        //{ validators: CustomValidators.passwordsMatching }
+        {
+            validators: [
+                PasswordValidator.validateMatching,
+                PasswordValidator.validateComplexity,
+            ],
+        }
     );
 
     constructor(
-        private router: Router //private authService: AuthService
+        private router: Router,
+        private registrationService: RegistrationService
     ) {}
 
     register() {
         if (!this.registerForm.valid) {
-            console.log("form is invalid");
             return;
         } else {
-            console.log("form valid");
-            console.log("val", this.registerForm.value);
+            this.registrationService.savePersonal(this.registerForm.value);
+            this.router.navigate(["/location"]);
         }
         // this.authService.register(this.registerForm.value).pipe(
         //   // If registration was successfull, then navigate to login route
