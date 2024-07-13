@@ -3,7 +3,10 @@ using UserPortal.Endpoints;
 using UserPortal.Infrastructure;
 using UserPortal.Options;
 
-var builder = WebApplication.CreateBuilder(args);
+var builder = WebApplication.CreateBuilder(new WebApplicationOptions
+{
+    WebRootPath = "wwwroot/browser"
+});
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -40,5 +43,9 @@ app.UseAuthorization();
 app.UseApplicationEndpoints();
 
 app.UseDatabaseMigrator();
+
+app.UseStaticFiles();
+
+app.MapFallbackToFile("index.html");
 
 app.Run();
