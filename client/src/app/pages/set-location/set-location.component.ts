@@ -118,8 +118,17 @@ export class SetLocationComponent implements OnInit {
                     of(error.error)
                         .pipe(
                             tap((d) => {
+                                let failures = (<
+                                    Array<{
+                                        errorCode?: string;
+                                        errorMessage?: string;
+                                    }>
+                                >Array.from(d.failures)).map(
+                                    (f) => f.errorMessage
+                                );
+                                const combined = failures.join(". ");
                                 this._snackBar
-                                    .open(d.message, $localize`Ok`)
+                                    .open(combined, $localize`Ok`)
                                     .afterDismissed()
                                     .subscribe(() => {
                                         this.router.navigate([""]);

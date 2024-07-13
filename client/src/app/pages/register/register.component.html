@@ -49,7 +49,7 @@
 				<mat-error *ngIf="
                         this.registerForm.get('passwordConfirm')?.dirty &&
                         this.registerForm.hasError('passwordsComplexity')
-                    " i18n>Password is must containts at least 1 digit and 1 char</mat-error>
+                    " i18n>Password must containts at least 1 digit and 1 char</mat-error>
 
 				<mat-checkbox #isAgreeCheckBox class="text-center" formControlName="isAgree" i18n>Agree work for
 					food</mat-checkbox>
