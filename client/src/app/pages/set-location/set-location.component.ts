@@ -8,12 +8,8 @@ import {
     ReactiveFormsModule,
     Validators,
 } from "@angular/forms";
-import {
-    ApiService,
-    CountryModel,
-    ProvinceModel,
-} from "../../services/apiService";
-import { delay, map, Observable, of, Subject, switchMap, tap } from "rxjs";
+import { ApiService } from "../../services/apiService";
+import { delay, of, Subject, tap } from "rxjs";
 import { MatError, MatFormField, MatLabel } from "@angular/material/form-field";
 import { MatOption, MatSelect } from "@angular/material/select";
 import { AsyncPipe, NgFor, NgIf } from "@angular/common";
@@ -23,7 +19,8 @@ import {
     MatSnackBarRef,
     TextOnlySnackBar,
 } from "@angular/material/snack-bar";
-import { MatButton, MatButtonModule } from "@angular/material/button";
+import { MatButtonModule } from "@angular/material/button";
+import { CountryModel, ProvinceModel } from "../../models/models";
 
 @Component({
     selector: "app-set-location",
@@ -122,7 +119,7 @@ export class SetLocationComponent implements OnInit {
                         .pipe(
                             tap((d) => {
                                 this._snackBar
-                                    .open(d.message, "Ok")
+                                    .open(d.message, $localize`Ok`)
                                     .afterDismissed()
                                     .subscribe(() => {
                                         this.router.navigate([""]);
