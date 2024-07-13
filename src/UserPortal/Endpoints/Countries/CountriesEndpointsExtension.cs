@@ -1,3 +1,6 @@
+using Asp.Versioning;
+using Asp.Versioning.Builder;
+
 using UserPortal.Application;
 using UserPortal.Application.Countries.Queries;
 
@@ -7,9 +10,17 @@ internal static class CountriesEndpointsExtension
 {
     internal static WebApplication UseCountriesEndpoints(this WebApplication app)
     {
-        app.MapGet("/api/countries", GetCountriesDataAsync)
+
+        ApiVersionSet apiVersionSet = app.NewApiVersionSet()
+            .HasApiVersion(new ApiVersion(1))
+            .ReportApiVersions()
+        .Build();
+
+        app.MapGet("/api/v{version:apiVersion}/countries", GetCountriesDataAsync)
             .AllowAnonymous()
             .WithName("GetCountriesData")
+            .WithApiVersionSet(apiVersionSet)
+            .MapToApiVersion(1)
             .WithOpenApi();
 
 

@@ -1,3 +1,6 @@
+using Asp.Versioning;
+using Asp.Versioning.Builder;
+
 using UserPortal.Application;
 using UserPortal.Application.Provinces.Queries;
 
@@ -7,9 +10,16 @@ internal static class ProvincesEndpointsExtension
 {
     internal static WebApplication UseProvincesEndpoints(this WebApplication app)
     {
-        app.MapGet("/api/provinces/{countryId}", GetProvincesByCountryIdAsync)
+        ApiVersionSet apiVersionSet = app.NewApiVersionSet()
+           .HasApiVersion(new ApiVersion(1))
+           .ReportApiVersions()
+       .Build();
+
+        app.MapGet("/api/v{version:apiVersion}/provinces/{countryId}", GetProvincesByCountryIdAsync)
             .AllowAnonymous()
             .WithName("GetProvinciesData")
+            .WithApiVersionSet(apiVersionSet)
+            .MapToApiVersion(1)
             .WithOpenApi();
 
 

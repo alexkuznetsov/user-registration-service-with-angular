@@ -1,3 +1,5 @@
+using Asp.Versioning;
+
 using UserPortal.Application;
 using UserPortal.Endpoints;
 using UserPortal.Infrastructure;
@@ -19,6 +21,21 @@ builder.Services.AddCors(c =>
         b.ConfigureCorsOptions(builder.Environment, builder.Configuration);
     });
 });
+
+builder.Services.AddApiVersioning(options =>
+{
+    options.DefaultApiVersion = new ApiVersion(1);
+    options.ReportApiVersions = true;
+    options.AssumeDefaultVersionWhenUnspecified = true;
+    options.ApiVersionReader = ApiVersionReader.Combine(
+        new UrlSegmentApiVersionReader(),
+        new HeaderApiVersionReader("X-Api-Version"));
+}).AddApiExplorer(options =>
+{
+    options.GroupNameFormat = "'v'V";
+    options.SubstituteApiVersionInUrl = true;
+});
+
 
 builder.Services
     .AddApplication()

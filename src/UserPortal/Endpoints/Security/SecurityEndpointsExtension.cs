@@ -1,9 +1,12 @@
+using Asp.Versioning;
+using Asp.Versioning.Builder;
+
+using Microsoft.AspNetCore.Identity;
+
 using UserPortal.Application;
 using UserPortal.Application.Common.Authentication;
 using UserPortal.Application.Users.Queries;
 using UserPortal.Domain.Users;
-
-using Microsoft.AspNetCore.Identity;
 
 namespace UserPortal.Endpoints.Weather;
 
@@ -11,9 +14,16 @@ internal static class SecurityEndpointsExtension
 {
     internal static WebApplication UseSecurityEndpoints(this WebApplication app)
     {
-        app.MapPost("/api/user/token", GetUserTokenAsync)
+        ApiVersionSet apiVersionSet = app.NewApiVersionSet()
+         .HasApiVersion(new ApiVersion(1))
+         .ReportApiVersions()
+       .Build();
+
+        app.MapPost("/api/v{version:apiVersion}/user/token", GetUserTokenAsync)
             .AllowAnonymous()
             .WithName("GetUserToken")
+            .WithApiVersionSet(apiVersionSet)
+            .MapToApiVersion(1)
             .WithOpenApi();
 
 

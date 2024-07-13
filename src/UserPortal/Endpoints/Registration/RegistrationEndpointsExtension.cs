@@ -1,5 +1,8 @@
 using System.ComponentModel.DataAnnotations;
 
+using Asp.Versioning;
+using Asp.Versioning.Builder;
+
 using Microsoft.AspNetCore.Identity;
 
 using UserPortal.Application;
@@ -15,9 +18,16 @@ internal static class RegistrationEndpointsExtension
 {
     internal static WebApplication UseRegistrationEndpoints(this WebApplication app)
     {
-        app.MapPost("/api/register", CreateUserAsync)
+        ApiVersionSet apiVersionSet = app.NewApiVersionSet()
+          .HasApiVersion(new ApiVersion(1))
+          .ReportApiVersions()
+        .Build();
+
+        app.MapPost("/api/v{version:apiVersion}/register", CreateUserAsync)
             .AllowAnonymous()
             .WithName("CreateUserAsync")
+            .WithApiVersionSet(apiVersionSet)
+            .MapToApiVersion(1)
             .WithOpenApi();
 
 
