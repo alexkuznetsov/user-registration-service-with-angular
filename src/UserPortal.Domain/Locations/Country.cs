@@ -14,14 +14,14 @@ public class Country : AggregateRoot<CountryId, Guid>
         Name = name;
     }
 
-    private Country()
-    {
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+    private Country() { }
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 
-    }
+    public static Country Create(CountryId id, string name)
+        => new(id, DateTime.UtcNow, name);
 
     public static Country Create(string name)
-    {
-        return new(CountryId.CreateUnique(), DateTime.UtcNow, name);
-    }
+        => new(CountryId.CreateUnique(), DateTime.UtcNow, name);
 }
 

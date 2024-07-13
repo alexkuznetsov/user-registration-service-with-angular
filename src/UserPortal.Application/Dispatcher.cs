@@ -1,6 +1,6 @@
-﻿using UserPortal.Application.Common.Messaging;
+﻿using MediatR;
 
-using MediatR;
+using UserPortal.Application.Common.Messaging;
 
 namespace UserPortal.Application;
 

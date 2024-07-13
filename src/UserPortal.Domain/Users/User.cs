@@ -24,12 +24,9 @@ public class User : AggregateRoot<UserId, Guid>
         Province = province;
     }
 
-    public static User Create(string email,
-        string password, Province province)
-    {
-        return new(UserId.CreateUnique(), email, password,
+    public static User Create(string email, string password, Province province)
+        => new(UserId.CreateUnique(), email, password,
             DateTime.UtcNow, province);
-    }
 
     public void SetPassword(string hashedPassword)
         => Password = hashedPassword;

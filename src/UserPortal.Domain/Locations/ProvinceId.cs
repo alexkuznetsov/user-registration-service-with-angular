@@ -12,14 +12,13 @@ public class ProvinceId : AggregateRootId<Guid>
     }
 
     public static ProvinceId CreateUnique()
-    {
-        return new(Guid.NewGuid());
-    }
+        => new(Guid.NewGuid());
+
+    public static ProvinceId Create(string value)
+        => Create(Guid.Parse(value));
 
     public static ProvinceId Create(Guid value)
-    {
-        return new(value);
-    }
+        => new(value);
 
     public override IEnumerable<object> GetEqualityComponents()
     {

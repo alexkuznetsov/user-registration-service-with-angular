@@ -117,19 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="EmailMustBeFilled" xml:space="preserve">
-    <value>Login can't be empty</value>
+  <data name="EmailCantBeNull" xml:space="preserve">
+    <value>Email can't be null</value>
+  </data>
+  <data name="EmailMustBe3AndMoreChars" xml:space="preserve">
+    <value>The email address must be at least 3 characters long</value>
   </data>
   <data name="EmailMustBeValid" xml:space="preserve">
-    <value>Login must be a valid email</value>
+    <value>The e-mail address must be valid</value>
   </data>
-  <data name="PasswordMustBeFilled" xml:space="preserve">
-    <value>Password can't be empty</value>
+  <data name="ErrorProvinceNotFound" xml:space="preserve">
+    <value>Province not found</value>
   </data>
-  <data name="PasswordsMushBeEquals" xml:space="preserve">
-    <value>Confirm password must be the same with password</value>
+  <data name="ErrorUserExists" xml:space="preserve">
+    <value>The user already exists</value>
   </data>
-  <data name="ProvinceMustBeFilled" xml:space="preserve">
-    <value>Province can't be empty</value>
+  <data name="PasswordAndPassw2MustBeSame" xml:space="preserve">
+    <value>Password and password confirmation must be the same</value>
+  </data>
+  <data name="PasswordCannotBeNullOrEmpty" xml:space="preserve">
+    <value>The password cannot be null or empty</value>
+  </data>
+  <data name="PasswordMustBeAtLeast2Symbols" xml:space="preserve">
+    <value>The password must be at least 2 characters long</value>
+  </data>
+  <data name="PasswordMustBeAtLeastOneNumAndOneChar" xml:space="preserve">
+    <value>The password must contain at least 1 digit and 1 character</value>
+  </data>
+  <data name="ProvinceCanNotBeNullOrEmpty" xml:space="preserve">
+    <value>A province cannot be null or empty</value>
+  </data>
+  <data name="YouMustBeAgreeToWork" xml:space="preserve">
+    <value>You must be willing to work</value>
   </data>
 </root>

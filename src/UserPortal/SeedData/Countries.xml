@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<countries>
+  <country id="67366adf-b926-42a7-80c0-985d2e10e948"
+           name="Kazakhstan">
+    <province id="34654a1d-2c97-4aa4-83bd-2d1ce7397a28"
+              name="East Kazakstan"/>
+    <province id="feacf07e-4852-4243-9a91-a12561707553"
+             name="South Kazakhstan"/>
+  </country>
+
+  <country id="3c26f1a6-34c0-4c3f-af95-4078db4dd13d"
+           name="USA">
+    <province id="f770ca60-1b62-4d81-9d9d-fc90e762793c"
+              name="California"/>
+    
+    <province id="0196fd39-e349-4c8a-9846-ece1ccfbbb57"
+              name="Texas"/>
+  </country>
+  
+</countries>

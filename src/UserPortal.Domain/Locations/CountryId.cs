@@ -12,14 +12,13 @@ public class CountryId : AggregateRootId<Guid>
     }
 
     public static CountryId CreateUnique()
-    {
-        return new(Guid.NewGuid());
-    }
+        => new(Guid.NewGuid());
+
+    public static CountryId Create(string value)
+        => new(Guid.Parse(value));
 
     public static CountryId Create(Guid value)
-    {
-        return new(value);
-    }
+        => new(value);
 
     public override IEnumerable<object> GetEqualityComponents()
     {

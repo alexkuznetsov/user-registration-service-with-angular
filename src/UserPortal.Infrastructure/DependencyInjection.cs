@@ -1,4 +1,11 @@
-﻿using UserPortal.Application.Common.Authentication;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+
+using UserPortal.Application.Common.Authentication;
 using UserPortal.Application.Common.Persistance;
 using UserPortal.Application.Common.Services;
 using UserPortal.Domain.Users;
@@ -6,13 +13,6 @@ using UserPortal.Infrastructure.Authentication;
 using UserPortal.Infrastructure.Persistence;
 using UserPortal.Infrastructure.Persistence.Repositories;
 using UserPortal.Infrastructure.Services;
-
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace UserPortal.Infrastructure;
 
@@ -50,7 +50,8 @@ public static class DependencyInjection
 
         services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-
+        services.AddOptions<DataSeederOptions>();
+        services.Configure<DataSeederOptions>(configuration.GetSection("DataSeed"));
         services.AddScoped<DataSeeder>();
 
         return services;
