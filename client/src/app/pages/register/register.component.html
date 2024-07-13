@@ -1,70 +1,63 @@
 <div>
 	<mat-card>
 		<mat-card-title class="pb-3">
-			<h3>Step 1</h3>
+			<h3 i18n>Step 1</h3>
 		</mat-card-title>
 
 		<mat-card-content>
 			<form [formGroup]="registerForm" (ngSubmit)="register()">
 				<mat-form-field>
-					<input type="email" matInput placeholder="Login" formControlName="email" />
+					<input type="email" matInput i18n placeholder="Login" formControlName="email" />
 					<!-- Here we can display error messages/hints for the user, if one of the Validators adds an error to the email 
 				with the .touched check we only display the hints if the input was touched by the users -->
 					<mat-error *ngIf="
                             this.registerForm.get('email')?.touched &&
                             this.registerForm.get('email')?.hasError('required')
-                        ">
-						Login is required</mat-error>
+                        " i18n>Login is required</mat-error>
 					<mat-error *ngIf="
                             this.registerForm.get('email')?.touched &&
                             this.registerForm.get('email')?.hasError('email')
-                        ">
-						Login must be a valid Email</mat-error>
+                        " i18n>Login must be a valid Email</mat-error>
 				</mat-form-field>
 
 				<mat-form-field>
-					<input type="password" matInput placeholder="Password" formControlName="password" />
+					<input type="password" matInput i18n placeholder="Password" formControlName="password" />
 					<mat-error *ngIf="
                             this.registerForm.get('password')?.touched &&
                             this.registerForm
                                 .get('password')
                                 ?.hasError('required')
-                        ">
-						Password is required</mat-error>
+                        " i18n>Password is required</mat-error>
 				</mat-form-field>
 
 				<mat-form-field>
-					<input type="password" matInput placeholder="Password Confirmation"
+					<input type="password" matInput i18n placeholder="Password Confirmation"
 						formControlName="passwordConfirm" />
 					<mat-error *ngIf="
                             this.registerForm.get('passwordConfirm')?.touched &&
                             this.registerForm
                                 .get('passwordConfirm')
                                 ?.hasError('required')
-                        ">
-						Password Confirmation is required</mat-error>
+                        " i18n>Password Confirmation is required</mat-error>
 				</mat-form-field>
 
 				<mat-error *ngIf="
                         this.registerForm.get('passwordConfirm')?.dirty &&
                         this.registerForm.hasError('passwordsNotMatching')
-                    ">
-					Passwords are not matching!</mat-error>
+                    " i18n>Passwords are not matching!</mat-error>
 
 				<mat-error *ngIf="
                         this.registerForm.get('passwordConfirm')?.dirty &&
                         this.registerForm.hasError('passwordsComplexity')
-                    ">
-					Password is must containts at least 1 digit and 1 char</mat-error>
+                    " i18n>Password is must containts at least 1 digit and 1 char</mat-error>
 
-
-				<mat-checkbox #isAgreeCheckBox class="text-center" formControlName="isAgree">Agree work for
+				<mat-checkbox #isAgreeCheckBox class="text-center" formControlName="isAgree" i18n>Agree work for
 					food</mat-checkbox>
 
 				<div class="button">
 					<!-- Button is disabled(not clickable), if our RegisterForm contains Validation Errors -->
 					<!-- <button type="submit" mat-button [disabled]="!registerForm.valid && isAgreeCheckBox.checked"> -->
-					<button type="submit" mat-button mat-raised-button
+					<button type="submit" mat-button mat-raised-button i18n
 						[disabled]="(!isAgreeCheckBox.checked) || (!registerForm.valid)">
 						Go to step 2
 					</button>

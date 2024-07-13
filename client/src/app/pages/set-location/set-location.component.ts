@@ -103,10 +103,11 @@ export class SetLocationComponent implements OnInit {
                             // and navigate to the first step
                             tap(() => {
                                 shackBarRef = this._snackBar.open(
-                                    "User registration success"
+                                    $localize`User registration success`,
+                                    $localize`Ok`
                                 );
                             }),
-                            delay(1000),
+                            delay(2000),
                             tap(() => {
                                 shackBarRef.dismiss();
                             }),

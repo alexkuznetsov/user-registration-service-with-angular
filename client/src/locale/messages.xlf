@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="8428348909593474745" datatype="html">
+        <source>Step 1</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/register/register.component.html</context>
+          <context context-type="linenumber">4,5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2460289297734292654" datatype="html">
+        <source>Login is required</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/register/register.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5361405613975736645" datatype="html">
+        <source>Login must be a valid Email</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/register/register.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="205044832662301680" datatype="html">
+        <source>Password is required</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/register/register.component.html</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3080400335649830103" datatype="html">
+        <source>Password Confirmation is required</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/register/register.component.html</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="827278028641787254" datatype="html">
+        <source>Passwords are not matching!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/register/register.component.html</context>
+          <context context-type="linenumber">47</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3777380479669234480" datatype="html">
+        <source>Password is must containts at least 1 digit and 1 char</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/register/register.component.html</context>
+          <context context-type="linenumber">52</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2510520354029022848" datatype="html">
+        <source>Agree work for food</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/register/register.component.html</context>
+          <context context-type="linenumber">54,55</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8588921116605660182" datatype="html">
+        <source> Go to step 2 </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/register/register.component.html</context>
+          <context context-type="linenumber">62,63</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3943314737845757694" datatype="html">
+        <source>Step 2</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/set-location/set-location.component.html</context>
+          <context context-type="linenumber">4,5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="516176798986294299" datatype="html">
+        <source>Country</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/set-location/set-location.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="379031774363374974" datatype="html">
+        <source>Country is required</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/set-location/set-location.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8909936386814821922" datatype="html">
+        <source>Province</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/set-location/set-location.component.html</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1712325563551055743" datatype="html">
+        <source>Province is required</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/set-location/set-location.component.html</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3042808158953329493" datatype="html">
+        <source> Finish </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/set-location/set-location.component.html</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8870906534205042195" datatype="html">
+        <source>User registration success</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/set-location/set-location.component.ts</context>
+          <context context-type="linenumber">106</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8720977247725652816" datatype="html">
+        <source>Ok</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/set-location/set-location.component.ts</context>
+          <context context-type="linenumber">107</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

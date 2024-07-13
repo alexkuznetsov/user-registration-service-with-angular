@@ -5,9 +5,7 @@ import {
     FormsModule,
     ReactiveFormsModule,
 } from "@angular/forms";
-import { Component, OnInit } from "@angular/core";
-//import { AuthService } from '../../services/auth-service/auth.service';
-import { tap } from "rxjs";
+import { Component } from "@angular/core";
 import { Router, RouterLink } from "@angular/router";
 import { MatToolbar } from "@angular/material/toolbar";
 import { MatCard, MatCardContent, MatCardTitle } from "@angular/material/card";
@@ -18,7 +16,7 @@ import { MatInput } from "@angular/material/input";
 import { MatCheckbox } from "@angular/material/checkbox";
 import { PasswordValidator } from "../../validators/passwordValidator";
 import { RegistrationService } from "../../services/registrationService";
-import { MatButton, MatButtonModule } from "@angular/material/button";
+import { MatButtonModule } from "@angular/material/button";
 
 @Component({
     selector: "app-register",
@@ -75,9 +73,5 @@ export class RegisterComponent {
             this.registrationService.savePersonal(this.registerForm.value);
             this.router.navigate(["/location"]);
         }
-        // this.authService.register(this.registerForm.value).pipe(
-        //   // If registration was successfull, then navigate to login route
-        //   tap(() => this.router.navigate(['../login']))
-        // ).subscribe();
     }
 }
