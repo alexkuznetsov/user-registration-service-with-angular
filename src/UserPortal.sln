@@ -14,7 +14,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "api", "api", "{600E4609-567
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{AFF3A4DD-9F26-40CA-B35E-B532D1D20E54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserPortal.IntergrationTests", "UserPortal.IntergrationTests\UserPortal.IntergrationTests.csproj", "{D7B1820C-6871-48A6-908A-F247B28E9F15}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserPortal.IntergrationTests", "UserPortal.IntergrationTests\UserPortal.IntergrationTests.csproj", "{D7B1820C-6871-48A6-908A-F247B28E9F15}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{1C2920B4-58AB-4D33-887C-730495471B7D}"
 	ProjectSection(SolutionItems) = preProject
