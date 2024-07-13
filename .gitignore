@@ -448,13 +448,8 @@ $RECYCLE.BIN/
 ## Visual Studio Code
 ##
 .vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-/src/LoginPage/loginpage.db
-/src/LoginPage/loginpage.db-shm
-/src/LoginPage/loginpage.db-wal
 /src/UserPortal/UserPortal.db
 /src/UserPortal/UserPortal.db-shm
 /src/UserPortal/UserPortal.db-wal
+bfg*
+
